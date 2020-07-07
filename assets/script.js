@@ -1,149 +1,192 @@
-
-
-var day = document.querySelector(".container");
-var currentDay = document.querySelector("#currentDay");
 var today = moment();
 $("#currentDay").text("Today is " + today.format("MM-DD-YYYY"));
-var hour8 = document.querySelector(".eight");
-var hour9 = document.querySelector(".nine");
-var hour10 = document.querySelector(".ten");
-var hour11 = document.querySelector(".eleven");
-var hour12 = document.querySelector(".twelve");
-var hour1 = document.querySelector(".one");
-var hour2 = document.querySelector(".two");
-var hour3 = document.querySelector(".three");
-var hour4 = document.querySelector(".four");
-var hour5 = document.querySelector(".five");
+var hours = [(today.hour(8).format("hh:00") + " am"), (today.hour(9).format("hh:00")+ " am"), (today.hour(10).format("hh:00") + " am"), (today.hour(11).format("hh:00")+ " am"),(today.hour(12).format("hh:00") + " pm"), (today.hour(13).format("hh:00")+ " pm"), (today.hour(14).format("hh:00") + " pm"), (today.hour(15).format("hh:00")+ " pm"), (today.hour(16).format("hh:00") + " pm"), (today.hour(17).format("hh:00")+ " pm"), (today.hour(18).format("hh:00") + " pm")];
+var userPlans=[{}];
+var timeReference =[];
+var buttonNumbers = [];
+// var input = $("<input>");
 
-
-
-
-
-if ( today.isAfter(moment("08:00", "hh:mm"))){
-   document.querySelector(".eight").style.background = "red";
-} else {
-   document.querySelector(".eight").style.background = "green";
-};
-
-if ( today.isAfter(moment("09:00", "hh:mm"))){
-   document.querySelector(".nine").style.background = "red";
-} else {
-   document.querySelector(".nine").style.background = "green";
-};
-
-if ( today.isAfter(moment("10:00", "hh:mm"))){
-   document.querySelector(".ten").style.background = "red";
-} else {
-   document.querySelector(".ten").style.background = "green";
-};
-
-if ( today.isAfter(moment("11:00", "hh:mm"))){
-   document.querySelector(".eleven").style.background = "red";
-} else {
-   document.querySelector(".eleven").style.background = "green";
-};
-
-if ( today.isAfter(moment("12:00", "hh:mm"))){
-   document.querySelector(".twelve").style.background = "red";
-} else {
-   document.querySelector(".twelve").style.background = "green";
-};
-
-if ( today.isAfter(moment("13:00", "hh:mm"))){
-   document.querySelector(".one").style.background = "red";
-} else {
-   document.querySelector(".one").style.background = "green";
-};
-
-if ( today.isAfter(moment("14:00", "hh:mm"))){
-   document.querySelector(".two").style.background = "red";
-} else {
-   document.querySelector(".two").style.background = "green";
-};
-
-if ( today.isAfter(moment("15:00", "hh:mm"))){
-   document.querySelector(".three").style.background = "red";
-} else {
-   document.querySelector(".three").style.background = "green";
-};
-
-if ( today.isAfter(moment("16:00", "hh:mm"))){
-   document.querySelector(".four").style.background = "red";
-} else {
-   document.querySelector(".four").style.background = "green";
-};
-
-if ( today.isAfter(moment("17:00", "hh:mm"))){
-   document.querySelector(".five").style.background = "red";
-} else {
-   document.querySelector(".five").style.background = "green";
-};
-
-
-
-
-
-$(hour8).on("click", function(){
-   var plan8 = prompt("What would you like to schedule?");
-   $("#8").text(plan8);
-   localStorage.setItem("8plans", plan8);
+//retrieves any values accordding to their keys from local storage upon loading
+$(document).ready(function(){
+    for(var j=0; j<10; j++){
+        if((localStorage.getItem("plan"+[j])!= null)){
+    $(".planDisplay"+[j]).text(localStorage.getItem("plan"+[j]));
+}
+    }
 });
 
 
-$(hour9).on("click", function(){
-    var plan9 = prompt("What would you like to schedule?");
-    $("#9").text(plan9);
-    localStorage.setItem("9plans", plan9);
- });
 
- $(hour10).on("click", function(){
-    var plan10 = prompt("What would you like to schedule?");
-    $("#10").text(plan10);
-    localStorage.setItem("10plans", plan10);
- });
+
+
+function createRow(businessHours){
+    for(var i=0; i<10; i++){
+        
+        
+        $(".container").append(`<div class=" row"> 
+        <button class="btn button btn-outline-dark timeSlot" id="button${[i]}">${hours[i]}</button>
+         <div class="col-md-7 planDisplay${[i]} outline-dark">
+        </div>
+        </div>`);
+        //create if else to style the buttons red or green according to time
+        var numbers = {"button": i};
+        buttonNumbers.push(numbers.button);
+        
+    };
+    console.log(buttonNumbers);
+   
+}
+createRow(8);
+
+//switch statement for figuring out which button to create this on
+//empty() timeslots
+$(`#button${0}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay0").text(given);
+    console.log(userPlans);
+    localStorage.setItem("plan0", given)
+    
+});
+$(`#button${1}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay1").text(given);
+    console.log(userPlans[2]);
+    localStorage.setItem("plan1", given)
+    
+});
+$(`#button${2}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay2").text(given);
+    localStorage.setItem("plan2", given)
+    
+});
+$(`#button${3}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay3").text(given);
+    localStorage.setItem("plan3", given)
+    
+});
+
+$(`#button${4}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay4").text(given);
+    localStorage.setItem("plan4", given)
+    
+});
+
+$(`#button${5}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay5").text(given);
+    localStorage.setItem("plan5", given)
+});
+
+$(`#button${6}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay6").text(given);
+    localStorage.setItem("plan6", given)
+});
+
+$(`#button${7}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay7").text(given);
+    localStorage.setItem("plan7", given)
+    
+});
+$(`#button${8}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay8").text(given);
+    localStorage.setItem("plan8", given)
+    
+});
+
+$(`#button${9}`).on("click", function(){
+    var given = prompt("whats gucci");
+    userPlans.push(given); // look into storing as object
+    //console.log(userPlans);
+    $(".planDisplay9").text(given);
+    localStorage.setItem("plan9", given)
+    
+});
+
+
+if ( today.isAfter(moment("08:00", "hh:mm"))){
+    document.querySelector(".planDisplay0").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay0").style.background = "green";
+ };
  
- $(hour11).on("click", function(){
-     var plan11 = prompt("What would you like to schedule?");
-     $("#11").text(plan11);
-     localStorage.setItem("11plans", plan11);
-  });
-
-  $(hour12).on("click", function(){
-    var plan12 = prompt("What would you like to schedule?");
-    $("#12").text(plan12);
-    localStorage.setItem("12plans", plan12);
- });
+ if ( today.isAfter(moment("09:00", "hh:mm"))){
+    document.querySelector(".planDisplay1").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay1").style.background = "green";
+ };
  
- $(hour1).on("click", function(){
-     var plan1 = prompt("What would you like to schedule?");
-     $("#1").text(plan1);
-     localStorage.setItem("1plans", plan1);
-  });
-
-  $(hour2).on("click", function(){
-    var plan2 = prompt("What would you like to schedule?");
-    $("#2").text(plan2);
-    localStorage.setItem("2plans", plan2);
- });
+ if ( today.isAfter(moment("10:00", "hh:mm"))){
+    document.querySelector(".planDisplay2").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay2").style.background = "green";
+ };
  
- $(hour3).on("click", function(){
-     var plan3 = prompt("What would you like to schedule?");
-     $("#3").text(plan3);
-     localStorage.setItem("3plans", plan3);
-  });
-
-  $(hour4).on("click", function(){
-    var plan4 = prompt("What would you like to schedule?");
-    $("#4").text(plan4);
-    localStorage.setItem("4plans", plan4);
- });
-
+ if ( today.isAfter(moment("11:00", "hh:mm"))){
+    document.querySelector(".planDisplay3").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay3").style.background = "green";
+ };
  
- $(hour5).on("click", function(){ //click event 
-     var plan5 = prompt("What would you like to schedule?");
-     $("#5").text(plan5);
-     localStorage.setItem("5plans", plan5);
-  }); 
+ if ( today.isAfter(moment("12:00", "hh:mm"))){
+    document.querySelector(".planDisplay4").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay4").style.background = "green";
+ };
+ 
+ if ( today.isAfter(moment("13:00", "hh:mm"))){
+    document.querySelector(".planDisplay5").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay5").style.background = "green";
+ };
+ 
+ if ( today.isAfter(moment("14:00", "hh:mm"))){
+    document.querySelector(".planDisplay6").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay6").style.background = "green";
+ };
+ 
+ if ( today.isAfter(moment("15:00", "hh:mm"))){
+    document.querySelector(".planDisplay7").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay7").style.background = "green";
+ };
+ 
+ if ( today.isAfter(moment("16:00", "hh:mm"))){
+    document.querySelector(".planDisplay8").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay8").style.background = "green";
+ };
+ 
+ if ( today.isAfter(moment("17:00", "hh:mm"))){
+    document.querySelector(".planDisplay9").style.background = "red";
+ } else {
+    document.querySelector(".planDisplay9").style.background = "green";
+ };
+ 
 
   
 
