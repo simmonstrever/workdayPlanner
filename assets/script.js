@@ -39,14 +39,14 @@ createRow(8);
 
 
 $(`#button${0}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay0").text(given);
    localStorage.setItem("plan0", given)
 
 });
 $(`#button${1}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    
    $(".planDisplay1").text(given);
@@ -54,7 +54,7 @@ $(`#button${1}`).on("click", function () {
 
 });
 $(`#button${2}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    
    $(".planDisplay2").text(given);
@@ -62,7 +62,7 @@ $(`#button${2}`).on("click", function () {
 
 });
 $(`#button${3}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay3").text(given);
    localStorage.setItem("plan3", given)
@@ -70,7 +70,7 @@ $(`#button${3}`).on("click", function () {
 });
 
 $(`#button${4}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay4").text(given);
    localStorage.setItem("plan4", given)
@@ -78,28 +78,28 @@ $(`#button${4}`).on("click", function () {
 });
 
 $(`#button${5}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay5").text(given);
    localStorage.setItem("plan5", given)
 });
 
 $(`#button${6}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay6").text(given);
    localStorage.setItem("plan6", given)
 });
 
 $(`#button${7}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay7").text(given);
    localStorage.setItem("plan7", given)
 
 });
 $(`#button${8}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay8").text(given);
    localStorage.setItem("plan8", given)
@@ -107,7 +107,7 @@ $(`#button${8}`).on("click", function () {
 });
 
 $(`#button${9}`).on("click", function () {
-   var given = prompt("whats gucci");
+   var given = prompt("What would you like to accomplish  for the time period?");
    userPlans.push(given); 
    $(".planDisplay9").text(given);
    localStorage.setItem("plan9", given)
